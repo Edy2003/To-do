@@ -2,17 +2,15 @@ import React, {FormEventHandler, MouseEventHandler, useState} from 'react';
 import Task from "./tasks";
 
 
-
 function Tasks (props:Task){
-
     return(
-        <>
             <div>
                 <h1>{props.task.title}</h1>
                 <p>{props.task.task}</p>
-                <button onClick={()=>props.button(props.index)}>Delete</button>
+                <button onClick={()=>props.buttonDelete(props.index)}>Delete</button>
+                <button onClick={()=>props.buttonChange(props.index)}>Change</button>
+                <button onClick={()=>props.buttonSave(props.index)}>Save</button>
             </div>
-        </>
     )
 }
 
@@ -29,7 +27,7 @@ function App() {
         setState({...state, task: e.target.value})
     }
 
-    const onClick:MouseEventHandler<HTMLButtonElement> =()=> {
+    const onClick:MouseEventHandler<HTMLButtonElement> = ()=> {
          setArr([...arr,state]);
          setState({title:'',task:''});
      }
@@ -44,6 +42,16 @@ function App() {
         setArr(oldArr)
     }
 
+    const Change = (i:number)=> {
+        setState(arr[i]);
+    }
+
+    const Save = (i:number)=> {
+        arr[i]=state;
+        setState(arr[i]);
+        setState({title:'',task:''});
+    }
+
   return(
       <>
           <form onSubmit={submit}>
@@ -54,9 +62,11 @@ function App() {
           </form>
           <div>
               {arr.map((e,i)=>
-                  <div key={i}>
-                    <Tasks task={e} button={Delete} index={i}/>
-                  </div>
+                    <Tasks task={e}
+                           index={i}
+                           buttonDelete={Delete}
+                           buttonChange={Change}
+                           buttonSave={Save}/>
               )}
           </div>
       </>

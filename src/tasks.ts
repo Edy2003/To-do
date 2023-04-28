@@ -1,8 +1,8 @@
-import {MouseEventHandler} from "react";
-
 interface Task{
     task:{title:string,task:string};
-    button:any;
     index:number;
+    buttonDelete:any;
+    buttonChange:any;
+    buttonSave:any;
 }
 export default Task
