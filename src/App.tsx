@@ -28,8 +28,10 @@ function App() {
     }
 
     const onClick:MouseEventHandler<HTMLButtonElement> = ()=> {
-         setArr([...arr,state]);
-         setState({title:'',task:''});
+        if(state.title!=='' && state.task!=='') {
+            setArr([...arr, state]);
+            setState({title: '', task: ''});
+        }else{alert('Error!')}
      }
 
      const submit:FormEventHandler<HTMLFormElement>=(e)=>{
@@ -47,9 +49,13 @@ function App() {
     }
 
     const Save = (i:number)=> {
-        arr[i]=state;
-        setState(arr[i]);
-        setState({title:'',task:''});
+        if(state.task!==''&&state.title!=='') {
+            arr[i] = state;
+            setState(arr[i]);
+            setState({title: '', task: ''});
+        }else{
+            alert('Error!')
+        }
     }
 
   return(
