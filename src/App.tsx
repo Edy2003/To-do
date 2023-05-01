@@ -59,8 +59,10 @@ function App() {
             arr[i] = state;
             setState(arr[i]);
             setState({title: '', task: ''});
+        }else if(state.task===''&&state.title===''){
+            alert('Fields are empty! Please write something)')
         }else{
-            alert('Error!')
+            alert('Your are trying to safe in the wrong task! Choose correct')
         }
     }
 
