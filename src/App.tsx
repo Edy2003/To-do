@@ -1,6 +1,6 @@
 import React, {FormEventHandler, MouseEventHandler, useState} from 'react';
 import Task from "./tasks";
-
+import './App.css';
 
 function Tasks (props:Task){
     return(
@@ -18,6 +18,11 @@ function App() {
 
     const [state,setState]= useState<{title:string,task:string}>({title:'',task:''});
     const [arr,setArr]= useState<{title:string,task:string}[]>([]);
+    const [num,setNum]=useState<number>()
+
+    const submit:FormEventHandler<HTMLFormElement>=(e)=>{
+        e.preventDefault();
+    }
 
     const onChangeTitle: React.ChangeEventHandler<HTMLInputElement> = (e) =>{
         setState({...state,title:e.target.value})
@@ -34,22 +39,19 @@ function App() {
         }else{alert('Error!')}
      }
 
-     const submit:FormEventHandler<HTMLFormElement>=(e)=>{
-        e.preventDefault();
-     }
-
-     const Delete = (i:number)=> {
+     const onDelete = (i:number)=> {
         const oldArr = [...arr];
         oldArr.splice(i,1)
         setArr(oldArr)
     }
 
-    const Change = (i:number)=> {
+    const change = (i:number)=> {
         setState(arr[i]);
+        setNum(i)
     }
 
-    const Save = (i:number)=> {
-        if(state.task!==''&&state.title!=='') {
+    const save = (i:number)=> {
+        if(state.task!==''&&state.title!=='' && num===i) {
             arr[i] = state;
             setState(arr[i]);
             setState({title: '', task: ''});
@@ -58,7 +60,7 @@ function App() {
         }
     }
 
-  return(
+    return(
       <>
           <form onSubmit={submit}>
               <label>To-do tasks</label>
@@ -70,9 +72,9 @@ function App() {
               {arr.map((e,i)=>
                     <Tasks task={e}
                            index={i}
-                           buttonDelete={Delete}
-                           buttonChange={Change}
-                           buttonSave={Save}/>
+                           buttonDelete={onDelete}
+                           buttonChange={change}
+                           buttonSave={save}/>
               )}
           </div>
       </>
