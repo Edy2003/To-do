@@ -4,12 +4,16 @@ import './App.css';
 
 function Tasks (props:Task){
     return(
-            <div>
-                <h1>{props.task.title}</h1>
-                <p>{props.task.task}</p>
-                <button onClick={()=>props.buttonDelete(props.index)}>Delete</button>
-                <button onClick={()=>props.buttonChange(props.index)}>Change</button>
-                <button onClick={()=>props.buttonSave(props.index)}>Save</button>
+            <div className='tasks'>
+                <div className='field'>
+                    <div className='taskTitle'>{props.task.title}</div>
+                    <div className='task'>{props.task.task}</div>
+                </div>
+                <div className='buttons'>
+                    <button className='taskButton delete' onClick={()=>props.buttonDelete(props.index)}>Delete</button>
+                    <button className='taskButton change' onClick={()=>props.buttonChange(props.index)}>Change</button>
+                    <button className='taskButton save' onClick={()=>props.buttonSave(props.index)}>Save</button>
+                </div>
             </div>
     )
 }
@@ -36,7 +40,7 @@ function App() {
         if(state.title!=='' && state.task!=='') {
             setArr([...arr, state]);
             setState({title: '', task: ''});
-        }else{alert('Error!')}
+        }else{alert('Fields are empty! Please write something)')}
      }
 
      const onDelete = (i:number)=> {
@@ -62,13 +66,17 @@ function App() {
 
     return(
       <>
-          <form onSubmit={submit}>
-              <label>To-do tasks</label>
-              <input type='text' onChange={onChangeTitle} value={state.title} />
-              <input type='text' onChange={onChangeTask} value={state.task} />
-              <button onClick={onClick}>Save</button>
+          <h2 className='title main'>To-do tasks</h2>
+          <form onSubmit={submit} className='inputForm'>
+              <div className='inputs'>
+                  <input type='text' placeholder='Title' onChange={onChangeTitle} value={state.title} className='input'/>
+                  <input type='text' placeholder='Task' onChange={onChangeTask} value={state.task} className='input'/>
+              </div>
+
+              <button onClick={onClick} className='mainSaveButton'>Add task</button>
           </form>
           <div>
+              <h3 className='title second'>Tasks</h3>
               {arr.map((e,i)=>
                     <Tasks task={e}
                            index={i}

@@ -1,6 +1,100 @@
-.hidden{
-    visibility: hidden;
+/*Body*/
+body{
+    background-color: #384152;
 }
-.active{
-    visibility: visible;
+/*Titles*/
+.title{
+    margin-left: 25px;
+    color:#4a5465;
+}
+.main{
+    font-size: 30px;
+}
+.second{
+    font-size: 22px;
+}
+/*Input from*/
+.inputForm{
+    display: flex;
+    flex-direction: row;
+}
+.inputs{
+    display: flex;
+    flex-direction: column;
+    width:40%;
+}
+.input{
+    background-color: #202938;
+    height: 30px;
+    margin: 0 25px 10px 25px;
+    padding-left: 5px;
+    color:#4a5465;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 20px;
+    border:none;
+}::placeholder{
+    color:#4a5465;
+     font-size: 16px;
+ }
+.mainSaveButton{
+    background-color: initial;
+    width:10%;
+    height: 25px;
+    margin: auto 0;
+    border:none;
+    cursor: pointer;
+    color: #7056ac;
+    font-size: 18px;
+    font-weight: 600;
+}
+/*Tasks*/
+.tasks{
+    background-color: #202938;
+    width:45%;
+    margin: 0 0 10px 25px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+}
+.field{
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    width:70%;
+}
+.taskTitle{
+    font-size: 24px;
+    font-weight: bold;
+    color: #4a5465;
+    margin-top: 5px;
+    height: 30%;
+}
+.task{
+    height: 65%;
+    font-size: 18px;
+    color: #4a5465;
+}
+.buttons{
+    margin: 10px 0;
+    width:25%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+.taskButton{
+    margin-bottom: 10px;
+    height:20px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+}
+.delete{
+    background-color: firebrick;
+}
+.change{
+    background-color: #7056ac;
+}
+.save{
+    background-color: #4a5465;
 }
