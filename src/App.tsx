@@ -1,5 +1,5 @@
 import React, {FormEventHandler, MouseEventHandler, useState} from 'react';
-import Task from "./tasks";
+import Task from './tasks';
 import './App.css';
 
 function Tasks (props:Task){
