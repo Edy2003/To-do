@@ -39,7 +39,7 @@ body{
  }
 .mainSaveButton{
     background-color: initial;
-    width:10%;
+    width:auto;
     height: 25px;
     margin: auto 0;
     border:none;
@@ -97,4 +97,29 @@ body{
 }
 .save{
     background-color: #4a5465;
+}
+
+@media (max-width: 800px){
+    .inputs{
+        width:60%;
+    }
+    .buttons{
+        width:22%;
+        font-size: 12px;
+    }
+}
+@media (max-width: 570px){
+    .inputs{
+        width:70%;
+    }
+    .tasks{
+        width:60%;
+    }
+    .buttons{
+        width:20%;
+        font-size: 12px;
+    }
+    .taskButton{
+        font-size: 12px;
+    }
 }
